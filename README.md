@@ -20,13 +20,13 @@ $ npm install mbr
 
 - **type**: *String*, defauts to `'CLASSIC'`
 - **tableOffset**: *Number*, defauts to `0x1BE`
-- **partitionCount**: *Number*, defauts to `4`
 - **partitions**: *Array*
 
 #### Methods:
 
 - **parse**( buffer ): *MBR*
   - *Buffer* **buffer**
+- **toBuffer**(): *Buffer*
 
 
 ### new MBR.Partition( buffer )
