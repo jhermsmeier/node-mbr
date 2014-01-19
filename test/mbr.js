@@ -23,7 +23,6 @@ describe( 'Master Boot Record', function() {
     })
     
     it( 'should contain 4 partition entries', function() {
-      assert.equal( mbr.partitionCount, 4 )
       assert.equal( mbr.partitions.length, 4 )
     })
     
