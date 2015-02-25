@@ -10,6 +10,11 @@
 $ npm install mbr
 ```
 
+## Handling Logical Partitions
+
+Logical partitions are not entries in the MBR. They're constructed from the contents of an extended partition's Extended Boot Records (EBR), which are essentially the same in structure as an MBR and can be parsed with this module as well.
+
+In order to read logical partitions, find a partition entry that's marked as extended partition container (type `0x05`, see `lib/partition-types.js`), then read that partition's first 512 bytes (the EBR), parse that, then look for additional EBRs in the extended partition. For more detail on how extended / logical partitions work, see [Wikipedia / Extended Boot Record](https://en.wikipedia.org/wiki/Extended_boot_record)
 
 ## Usage
 
