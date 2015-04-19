@@ -1,29 +1,37 @@
 {
   "name": "mbr",
   "version": "0.3.0",
-  "license": "MIT",
   "description": "Master Boot Record (MBR)",
-  "keywords": [],
-  "author": {
-    "name": "Jonas Hermsmeier",
-    "email": "jhermsmeier@gmail.com",
-    "url": "https://github.com/jhermsmeier"
-  },
+  "license": "MIT",
+  "keywords": [
+    "mbr",
+    "master",
+    "boot",
+    "record",
+    "disk",
+    "structure",
+    "parser"
+  ],
   "main": "lib/mbr",
-  "scripts": {
-    "test": "node node_modules/mocha/bin/mocha"
-  },
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
   "dependencies": {
-    "chs": "~0.1.0"
+    "chs": "~0.2.0"
   },
   "devDependencies": {
-    "mocha": "^2.0.1"
+    "mocha": "~2.2.4"
   },
+  "scripts": {
+    "test": "mocha"
+  },
+  "homepage": "https://github.com/jhermsmeier/node-mbr",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhermsmeier/node-mbr.git"
+    "url": "git+https://github.com/jhermsmeier/node-mbr.git"
   },
   "bugs": {
     "url": "https://github.com/jhermsmeier/node-mbr/issues"
+  },
+  "directories": {
+    "test": "test"
   }
 }
