@@ -12,7 +12,7 @@ describe( 'Master Boot Record', function() {
   
   describe( 'CLASSIC', function() {
     
-    var mbr = new MBR()
+    var mbr = new MBR.CLASSIC()
     
     it( 'should be able to parse the MBR', function() {
       mbr.parse( data.classic )
