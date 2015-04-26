@@ -1,10 +1,9 @@
 # MBR - Master Boot Record
-[![npm](http://img.shields.io/npm/v/mbr.svg?style=flat)](https://npmjs.org/mbr)
-[![npm downloads](http://img.shields.io/npm/dm/mbr.svg?style=flat)](https://npmjs.org/mbr)
-[![build status](http://img.shields.io/travis/jhermsmeier/node-mbr.svg?style=flat)](https://travis-ci.org/jhermsmeier/node-mbr)
+[![npm](http://img.shields.io/npm/v/mbr.svg?style=flat-square)](https://npmjs.com/mbr)
+[![npm downloads](http://img.shields.io/npm/dm/mbr.svg?style=flat-square)](https://npmjs.com/mbr)
+[![build status](http://img.shields.io/travis/jhermsmeier/node-mbr.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mbr)
 
-
-## Install via [npm](https://npmjs.org)
+## Install via [npm](https://npmjs.com)
 
 ```sh
 $ npm install mbr
