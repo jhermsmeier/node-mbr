@@ -7,4 +7,5 @@ node_js:
 branches:
   only:
     - master
+sudo: false
 script: npm test
