@@ -1,6 +1,6 @@
 {
   "name": "mbr",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Master Boot Record (MBR)",
   "license": "MIT",
   "keywords": [
