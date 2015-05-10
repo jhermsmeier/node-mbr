@@ -1,6 +1,6 @@
 {
   "name": "mbr",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Master Boot Record (MBR)",
   "license": "MIT",
   "keywords": [
@@ -16,7 +16,7 @@
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
   "dependencies": {
     "bloodline": "~1.0.0",
-    "chs": "~0.2.0"
+    "chs": "~0.2.1"
   },
   "devDependencies": {
     "mocha": "~2.2.4"
