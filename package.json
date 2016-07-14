@@ -2,6 +2,7 @@
   "name": "mbr",
   "version": "0.4.5",
   "description": "Master Boot Record (MBR)",
+  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de)",
   "license": "MIT",
   "keywords": [
     "mbr",
@@ -10,19 +11,19 @@
     "record",
     "disk",
     "structure",
-    "parser"
+    "parser",
+    "hdd",
+    "gpt",
+    "chs",
+    "lba"
   ],
-  "main": "lib/mbr",
-  "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de/)",
+  "main": "lib/mbr.js",
   "dependencies": {
     "bloodline": "~1.0.0",
     "chs": "~0.2.1"
   },
   "devDependencies": {
     "mocha": "~2.5.3"
-  },
-  "scripts": {
-    "test": "mocha"
   },
   "homepage": "https://github.com/jhermsmeier/node-mbr",
   "repository": {
@@ -34,5 +35,8 @@
   },
   "directories": {
     "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
