@@ -23,6 +23,7 @@
     "chs": "~0.2.1"
   },
   "devDependencies": {
+    "jsdoc-to-markdown": "~1.3.6",
     "mocha": "~2.5.3"
   },
   "homepage": "https://github.com/jhermsmeier/node-mbr",
@@ -37,6 +38,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "docs": "echo '# API Reference' > API.md; jsdoc2md 'lib/**/*.js' --separators --global-index-format grouped --property-list-format list --param-list-format list >> API.md"
   }
 }
