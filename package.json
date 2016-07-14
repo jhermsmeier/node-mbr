@@ -19,7 +19,7 @@
     "chs": "~0.2.1"
   },
   "devDependencies": {
-    "mocha": "~2.2.4"
+    "mocha": "~2.5.3"
   },
   "scripts": {
     "test": "mocha"
