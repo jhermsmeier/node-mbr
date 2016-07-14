@@ -20,7 +20,7 @@
   "main": "lib/mbr.js",
   "dependencies": {
     "bloodline": "~1.0.0",
-    "chs": "~0.2.1"
+    "chs": "~0.4.0"
   },
   "devDependencies": {
     "jsdoc-to-markdown": "~1.3.6",
