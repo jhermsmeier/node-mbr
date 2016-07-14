@@ -1,12 +1,15 @@
 # MBR - Master Boot Record
-[![npm](http://img.shields.io/npm/v/mbr.svg?style=flat-square)](https://npmjs.com/mbr)
-[![npm downloads](http://img.shields.io/npm/dm/mbr.svg?style=flat-square)](https://npmjs.com/mbr)
-[![build status](http://img.shields.io/travis/jhermsmeier/node-mbr.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mbr)
+[![npm](https://img.shields.io/npm/v/mbr.svg?style=flat-square)](https://npmjs.com/package/mbr)
+[![npm license](https://img.shields.io/npm/l/mbr.svg?style=flat-square)](https://npmjs.com/package/mbr)
+[![npm downloads](https://img.shields.io/npm/dm/mbr.svg?style=flat-square)](https://npmjs.com/package/mbr)
+[![build status](https://img.shields.io/travis/jhermsmeier/node-mbr.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mbr)
+
+Master Boot Record (MBR)
 
 ## Install via [npm](https://npmjs.com)
 
 ```sh
-$ npm install mbr
+$ npm install --save mbr
 ```
 
 ## Handling Extended / Logical Partitions
@@ -15,7 +18,9 @@ Logical partitions are not entries in the MBR. They're constructed from the cont
 
 In order to read logical partitions, find a partition entry that's marked as extended partition container, then read that partition's first 512 bytes (the EBR), parse that, then look for additional EBRs in the extended partition. For more detail on how extended / logical partitions work, see [Wikipedia / Extended Boot Record](https://en.wikipedia.org/wiki/Extended_boot_record)
 
-## Example
+## Usage
+
+For a complete API reference, see [`API.md`](https://github.com/jhermsmeier/node-mbr/blob/master/API.md)
 
 ```js
 var MBR = require( 'mbr' )
@@ -90,48 +95,3 @@ Offset   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
   }]
 }
 ```
-
-## Usage
-
-#### new MBR( buffer, [start], [end] )
-
-Base class constructor. See [MBR.parse()]().
-Every format's constructor inherits from `MBR`, see [formats](#formats).
-
-### Formats
-
-- new MBR.CLASSIC( buffer, [start], [end] )
-- new MBR.MODERN( buffer, [start], [end] )
-- new MBR.NEWLDR( buffer, [start], [end] )
-- new MBR.AAP( buffer, [start], [end] )
-- new MBR.DM( buffer, [start], [end] )
-- new MBR.AST( buffer, [start], [end] )
-
-#### new MBR.Partition( buffer, [start], [end] )
-
-**Getters:**
-
-- **buffer**: *Buffer*
-- **statusText**: *String*
-- **active**: *Boolean*
-- **inactive**: *Boolean*
-- **invalid**: *Boolean*
-- **extended**: *Boolean*
-- **lastLBA**: *Number*
-
-**Setters:**
-
-- **buffer**: *Buffer*
-
-**Properties:**
-
-- **status**: *Number*, defaults to `0`
-- **type**: *Number*, defaults to `0`
-- **sectors**: *Number*, defaults to `0`
-- **firstLBA**: *Number*, defaults to `0`
-- **firstCHS**: *[CHS](https://github.com/jhermsmeier/node-chs)*
-- **lastCHS**: *[CHS](https://github.com/jhermsmeier/node-chs)*
-
-**Methods:**
-
-- **parse( buffer, [start], [end] )**
