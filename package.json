@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "jsdoc-to-markdown": "~2.0.1",
-    "mocha": "~3.1.2"
+    "mocha": "~3.2.0"
   },
   "homepage": "https://github.com/jhermsmeier/node-mbr",
   "repository": {
