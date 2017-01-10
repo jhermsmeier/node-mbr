@@ -20,7 +20,7 @@ In order to read logical partitions, find a partition entry that's marked as ext
 
 ## Usage
 
-For a complete API reference, see [`API.md`](https://github.com/jhermsmeier/node-mbr/blob/master/API.md)
+For a complete API reference, see [`doc/README.md`](https://github.com/jhermsmeier/node-mbr/tree/master/doc)
 
 ```js
 var MBR = require( 'mbr' )
