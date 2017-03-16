@@ -19,11 +19,10 @@
   ],
   "main": "lib/mbr.js",
   "dependencies": {
-    "bloodline": "~1.0.0",
+    "bloodline": "~1.0.1",
     "chs": "~1.0.0"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "~2.0.1",
     "mocha": "~3.2.0"
   },
   "homepage": "https://github.com/jhermsmeier/node-mbr",
@@ -38,7 +37,6 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha",
-    "docs": "echo '# API Reference' > doc/README.md; jsdoc2md 'lib/**/*.js' --separators --global-index-format grouped --property-list-format list --param-list-format list >> doc/README.md"
+    "test": "mocha"
   }
 }
