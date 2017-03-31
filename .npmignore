@@ -1,3 +1,7 @@
 .*
+*.log
+*.md
+
+benchmark
+doc
 test
-API.md
