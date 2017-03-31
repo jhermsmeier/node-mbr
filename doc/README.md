@@ -13,6 +13,7 @@
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.Code](#MBR.Code)
             * [new Code(buffer, [start], [end])](#new_MBR.Code_new)
@@ -27,6 +28,7 @@
                 * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
                 * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
                 * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+                * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
             * _static_
                 * [.Record](#MBR.AAP.Record)
                     * [new Record([buffer], [start], [end])](#new_MBR.AAP.Record_new)
@@ -48,6 +50,7 @@
                 * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
                 * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
                 * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+                * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
             * _static_
                 * [.TABLE_OFFSET](#MBR.AST.TABLE_OFFSET) : <code>Number</code>
                 * [.PARTITION_ENTRIES](#MBR.AST.PARTITION_ENTRIES) : <code>Number</code>
@@ -60,6 +63,7 @@
                 * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
                 * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
                 * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+                * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
             * _static_
                 * [.TABLE_OFFSET](#MBR.CLASSIC.TABLE_OFFSET) : <code>Number</code>
                 * [.PARTITION_ENTRIES](#MBR.CLASSIC.PARTITION_ENTRIES) : <code>Number</code>
@@ -72,6 +76,7 @@
                 * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
                 * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
                 * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+                * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
             * _static_
                 * [.TABLE_OFFSET](#MBR.DM.TABLE_OFFSET) : <code>Number</code>
                 * [.PARTITION_ENTRIES](#MBR.DM.PARTITION_ENTRIES) : <code>Number</code>
@@ -88,6 +93,7 @@
                 * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
                 * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
                 * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+                * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
             * _static_
                 * [.TABLE_OFFSET](#MBR.MODERN.TABLE_OFFSET) : <code>Number</code>
                 * [.PARTITION_ENTRIES](#MBR.MODERN.PARTITION_ENTRIES) : <code>Number</code>
@@ -102,6 +108,7 @@
                 * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
                 * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
                 * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+                * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
             * _static_
                 * [.Record](#MBR.NEWLDR.Record)
                     * [new Record([buffer], [start], [end])](#new_MBR.NEWLDR.Record_new)
@@ -118,8 +125,14 @@
         * [.Partition](#MBR.Partition)
             * [new Partition([buffer], [start], [end])](#new_MBR.Partition_new)
             * _instance_
-                * [.byteOffset(blockSize)](#MBR.Partition+byteOffset) ⇒ <code>Number</code>
-                * [.byteSize(blockSize)](#MBR.Partition+byteSize) ⇒ <code>Number</code>
+                * [.status](#MBR.Partition+status) : <code>Number</code>
+                * [.type](#MBR.Partition+type) : <code>Number</code>
+                * [.sectors](#MBR.Partition+sectors) : <code>Number</code>
+                * [.firstLBA](#MBR.Partition+firstLBA) : <code>Number</code>
+                * [.firstCHS](#MBR.Partition+firstCHS) : <code>Number</code>
+                * [.lastCHS](#MBR.Partition+lastCHS) : <code>Number</code>
+                * [.byteOffset([blockSize])](#MBR.Partition+byteOffset) ⇒ <code>Number</code>
+                * [.byteSize([blockSize])](#MBR.Partition+byteSize) ⇒ <code>Number</code>
             * _static_
                 * [.EXTENDED](#MBR.Partition.EXTENDED) : <code>Array</code>
                 * [.parse([buffer], [start], [end])](#MBR.Partition.parse) ⇒ <code>Partition</code>
@@ -132,7 +145,7 @@
         * [.isExtendedPartition(partition)](#MBR.isExtendedPartition) ⇒ <code>Boolean</code>
 
 
--
+* * *
 
 <a name="new_MBR_new"></a>
 
@@ -146,7 +159,7 @@ Master Boot Record (MBR)
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -155,7 +168,7 @@ Partition table
 
 **Kind**: instance property of <code>[MBR](#MBR)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -164,7 +177,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[MBR](#MBR)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -174,7 +187,7 @@ MBR format
 **Kind**: instance property of <code>[MBR](#MBR)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -184,7 +197,7 @@ Partition table offset
 **Kind**: instance property of <code>[MBR](#MBR)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -194,7 +207,7 @@ Number of partition entries
 **Kind**: instance property of <code>[MBR](#MBR)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -209,7 +222,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+### mbR.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[MBR](#MBR)</code>  
+
+* * *
 
 <a name="MBR.Code"></a>
 
@@ -221,7 +243,7 @@ Parse a Buffer
     * [.length](#MBR.Code+length)
 
 
--
+* * *
 
 <a name="new_MBR.Code_new"></a>
 
@@ -235,7 +257,7 @@ Code section structure
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.Code+length"></a>
 
@@ -249,13 +271,13 @@ Number of bytes
 - length <code>Number</code>  
 
 
--
+* * *
 
 <a name="MBR.AAP"></a>
 
 ### MBR.AAP ⇐ <code>[MBR](#MBR)</code>
 **Kind**: static class of <code>[MBR](#MBR)</code>  
-**Extends:** <code>[MBR](#MBR)</code>  
+**Extends**: <code>[MBR](#MBR)</code>  
 
 * [.AAP](#MBR.AAP) ⇐ <code>[MBR](#MBR)</code>
     * [new AAP([buffer], [start], [end])](#new_MBR.AAP_new)
@@ -267,6 +289,7 @@ Number of bytes
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.Record](#MBR.AAP.Record)
             * [new Record([buffer], [start], [end])](#new_MBR.AAP.Record_new)
@@ -281,7 +304,7 @@ Number of bytes
         * [.PARTITION_ENTRIES](#MBR.AAP.PARTITION_ENTRIES) : <code>Number</code>
 
 
--
+* * *
 
 <a name="new_MBR.AAP_new"></a>
 
@@ -295,7 +318,7 @@ AAP (Advanced Active Partitions)
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.AAP+aap"></a>
 
@@ -304,7 +327,7 @@ AAP Record
 
 **Kind**: instance property of <code>[AAP](#MBR.AAP)</code>  
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -313,7 +336,7 @@ Partition table
 
 **Kind**: instance property of <code>[AAP](#MBR.AAP)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -322,7 +345,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[AAP](#MBR.AAP)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -332,7 +355,7 @@ MBR format
 **Kind**: instance property of <code>[AAP](#MBR.AAP)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -342,7 +365,7 @@ Partition table offset
 **Kind**: instance property of <code>[AAP](#MBR.AAP)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -352,7 +375,7 @@ Number of partition entries
 **Kind**: instance property of <code>[AAP](#MBR.AAP)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -367,7 +390,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+#### aaP.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[AAP](#MBR.AAP)</code>  
+
+* * *
 
 <a name="MBR.AAP.Record"></a>
 
@@ -385,7 +417,7 @@ Parse a Buffer
     * [.buffer](#MBR.AAP.Record+buffer)
 
 
--
+* * *
 
 <a name="new_MBR.AAP.Record_new"></a>
 
@@ -399,7 +431,7 @@ AAP Record
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.AAP.Record+physicalDrive"></a>
 
@@ -408,7 +440,7 @@ AAP physical drive (80h-FEh; 00h: not used; 01h-7Fh, FFh: reserved)
 
 **Kind**: instance property of <code>[Record](#MBR.AAP.Record)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.Record+firstCHS"></a>
 
@@ -417,7 +449,7 @@ CHS (start) address of AAP partition/image file or VBR/EBR
 
 **Kind**: instance property of <code>[Record](#MBR.AAP.Record)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.Record+partitionType"></a>
 
@@ -426,7 +458,7 @@ AAP partition type (00h if not used) (optional)
 
 **Kind**: instance property of <code>[Record](#MBR.AAP.Record)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.Record+lastCHS"></a>
 
@@ -435,7 +467,7 @@ CHS end address in AAP (optional, 000000h if not used)
 
 **Kind**: instance property of <code>[Record](#MBR.AAP.Record)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.Record+firstLBA"></a>
 
@@ -444,7 +476,7 @@ Start LBA of AAP image file or VBR/EBR
 
 **Kind**: instance property of <code>[Record](#MBR.AAP.Record)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.Record+sectors"></a>
 
@@ -453,7 +485,7 @@ Reserved for sectors in AAP (optional; 00000000h if not used)
 
 **Kind**: instance property of <code>[Record](#MBR.AAP.Record)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.Record+buffer"></a>
 
@@ -466,7 +498,7 @@ Buffer
 - buffer <code>Buffer</code>  
 
 
--
+* * *
 
 <a name="MBR.AAP.TABLE_OFFSET"></a>
 
@@ -475,7 +507,7 @@ Partition table offset
 
 **Kind**: static constant of <code>[AAP](#MBR.AAP)</code>  
 
--
+* * *
 
 <a name="MBR.AAP.PARTITION_ENTRIES"></a>
 
@@ -484,13 +516,13 @@ Partition table entry count
 
 **Kind**: static constant of <code>[AAP](#MBR.AAP)</code>  
 
--
+* * *
 
 <a name="MBR.AST"></a>
 
 ### MBR.AST ⇐ <code>[MBR](#MBR)</code>
 **Kind**: static class of <code>[MBR](#MBR)</code>  
-**Extends:** <code>[MBR](#MBR)</code>  
+**Extends**: <code>[MBR](#MBR)</code>  
 
 * [.AST](#MBR.AST) ⇐ <code>[MBR](#MBR)</code>
     * [new AST([buffer], [start], [end])](#new_MBR.AST_new)
@@ -501,12 +533,13 @@ Partition table entry count
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.TABLE_OFFSET](#MBR.AST.TABLE_OFFSET) : <code>Number</code>
         * [.PARTITION_ENTRIES](#MBR.AST.PARTITION_ENTRIES) : <code>Number</code>
 
 
--
+* * *
 
 <a name="new_MBR.AST_new"></a>
 
@@ -520,7 +553,7 @@ AST (AST Research / NEC MS-DOS and SpeedStor)
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -529,7 +562,7 @@ Partition table
 
 **Kind**: instance property of <code>[AST](#MBR.AST)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -538,7 +571,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[AST](#MBR.AST)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -548,7 +581,7 @@ MBR format
 **Kind**: instance property of <code>[AST](#MBR.AST)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -558,7 +591,7 @@ Partition table offset
 **Kind**: instance property of <code>[AST](#MBR.AST)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -568,7 +601,7 @@ Number of partition entries
 **Kind**: instance property of <code>[AST](#MBR.AST)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -583,7 +616,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+#### asT.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[AST](#MBR.AST)</code>  
+
+* * *
 
 <a name="MBR.AST.TABLE_OFFSET"></a>
 
@@ -592,7 +634,7 @@ Partition table offset
 
 **Kind**: static constant of <code>[AST](#MBR.AST)</code>  
 
--
+* * *
 
 <a name="MBR.AST.PARTITION_ENTRIES"></a>
 
@@ -601,13 +643,13 @@ Partition table entry count
 
 **Kind**: static constant of <code>[AST](#MBR.AST)</code>  
 
--
+* * *
 
 <a name="MBR.CLASSIC"></a>
 
 ### MBR.CLASSIC ⇐ <code>[MBR](#MBR)</code>
 **Kind**: static class of <code>[MBR](#MBR)</code>  
-**Extends:** <code>[MBR](#MBR)</code>  
+**Extends**: <code>[MBR](#MBR)</code>  
 
 * [.CLASSIC](#MBR.CLASSIC) ⇐ <code>[MBR](#MBR)</code>
     * [new CLASSIC([buffer], [start], [end])](#new_MBR.CLASSIC_new)
@@ -618,12 +660,13 @@ Partition table entry count
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.TABLE_OFFSET](#MBR.CLASSIC.TABLE_OFFSET) : <code>Number</code>
         * [.PARTITION_ENTRIES](#MBR.CLASSIC.PARTITION_ENTRIES) : <code>Number</code>
 
 
--
+* * *
 
 <a name="new_MBR.CLASSIC_new"></a>
 
@@ -637,7 +680,7 @@ CLASSIC (classical generic)
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -646,7 +689,7 @@ Partition table
 
 **Kind**: instance property of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -655,7 +698,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -665,7 +708,7 @@ MBR format
 **Kind**: instance property of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -675,7 +718,7 @@ Partition table offset
 **Kind**: instance property of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -685,7 +728,7 @@ Number of partition entries
 **Kind**: instance property of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -700,7 +743,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+#### classiC.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[CLASSIC](#MBR.CLASSIC)</code>  
+
+* * *
 
 <a name="MBR.CLASSIC.TABLE_OFFSET"></a>
 
@@ -709,7 +761,7 @@ Partition table offset
 
 **Kind**: static constant of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 
--
+* * *
 
 <a name="MBR.CLASSIC.PARTITION_ENTRIES"></a>
 
@@ -718,13 +770,13 @@ Partition table entry count
 
 **Kind**: static constant of <code>[CLASSIC](#MBR.CLASSIC)</code>  
 
--
+* * *
 
 <a name="MBR.DM"></a>
 
 ### MBR.DM ⇐ <code>[MBR](#MBR)</code>
 **Kind**: static class of <code>[MBR](#MBR)</code>  
-**Extends:** <code>[MBR](#MBR)</code>  
+**Extends**: <code>[MBR](#MBR)</code>  
 
 * [.DM](#MBR.DM) ⇐ <code>[MBR](#MBR)</code>
     * [new DM([buffer], [start], [end])](#new_MBR.DM_new)
@@ -735,12 +787,13 @@ Partition table entry count
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.TABLE_OFFSET](#MBR.DM.TABLE_OFFSET) : <code>Number</code>
         * [.PARTITION_ENTRIES](#MBR.DM.PARTITION_ENTRIES) : <code>Number</code>
 
 
--
+* * *
 
 <a name="new_MBR.DM_new"></a>
 
@@ -754,7 +807,7 @@ DM (Disk Manager)
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -763,7 +816,7 @@ Partition table
 
 **Kind**: instance property of <code>[DM](#MBR.DM)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -772,7 +825,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[DM](#MBR.DM)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -782,7 +835,7 @@ MBR format
 **Kind**: instance property of <code>[DM](#MBR.DM)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -792,7 +845,7 @@ Partition table offset
 **Kind**: instance property of <code>[DM](#MBR.DM)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -802,7 +855,7 @@ Number of partition entries
 **Kind**: instance property of <code>[DM](#MBR.DM)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -817,7 +870,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+#### dM.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[DM](#MBR.DM)</code>  
+
+* * *
 
 <a name="MBR.DM.TABLE_OFFSET"></a>
 
@@ -826,7 +888,7 @@ Partition table offset
 
 **Kind**: static constant of <code>[DM](#MBR.DM)</code>  
 
--
+* * *
 
 <a name="MBR.DM.PARTITION_ENTRIES"></a>
 
@@ -835,13 +897,13 @@ Partition table entry count
 
 **Kind**: static constant of <code>[DM](#MBR.DM)</code>  
 
--
+* * *
 
 <a name="MBR.MODERN"></a>
 
 ### MBR.MODERN ⇐ <code>[MBR](#MBR)</code>
 **Kind**: static class of <code>[MBR](#MBR)</code>  
-**Extends:** <code>[MBR](#MBR)</code>  
+**Extends**: <code>[MBR](#MBR)</code>  
 
 * [.MODERN](#MBR.MODERN) ⇐ <code>[MBR](#MBR)</code>
     * [new MODERN([buffer], [start], [end])](#new_MBR.MODERN_new)
@@ -856,12 +918,13 @@ Partition table entry count
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.TABLE_OFFSET](#MBR.MODERN.TABLE_OFFSET) : <code>Number</code>
         * [.PARTITION_ENTRIES](#MBR.MODERN.PARTITION_ENTRIES) : <code>Number</code>
 
 
--
+* * *
 
 <a name="new_MBR.MODERN_new"></a>
 
@@ -875,7 +938,7 @@ MODERN (modern standard)
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.MODERN+physicalDrive"></a>
 
@@ -884,7 +947,7 @@ Original physical drive (80h-FFh)
 
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR.MODERN+timestamp"></a>
 
@@ -893,7 +956,7 @@ Disk timestamp (optional)
 
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR.MODERN+signature"></a>
 
@@ -902,7 +965,7 @@ Disk signature (32bit, optional)
 
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR.MODERN+copyProtected"></a>
 
@@ -911,7 +974,7 @@ Copy Protection
 
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -920,7 +983,7 @@ Partition table
 
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -929,7 +992,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -939,7 +1002,7 @@ MBR format
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -949,7 +1012,7 @@ Partition table offset
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -959,7 +1022,7 @@ Number of partition entries
 **Kind**: instance property of <code>[MODERN](#MBR.MODERN)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -974,7 +1037,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+#### moderN.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[MODERN](#MBR.MODERN)</code>  
+
+* * *
 
 <a name="MBR.MODERN.TABLE_OFFSET"></a>
 
@@ -983,7 +1055,7 @@ Partition table offset
 
 **Kind**: static constant of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR.MODERN.PARTITION_ENTRIES"></a>
 
@@ -992,13 +1064,13 @@ Partition table entry count
 
 **Kind**: static constant of <code>[MODERN](#MBR.MODERN)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR"></a>
 
 ### MBR.NEWLDR ⇐ <code>[MBR](#MBR)</code>
 **Kind**: static class of <code>[MBR](#MBR)</code>  
-**Extends:** <code>[MBR](#MBR)</code>  
+**Extends**: <code>[MBR](#MBR)</code>  
 
 * [.NEWLDR](#MBR.NEWLDR) ⇐ <code>[MBR](#MBR)</code>
     * [new NEWLDR([buffer], [start], [end])](#new_MBR.NEWLDR_new)
@@ -1011,6 +1083,7 @@ Partition table entry count
         * [.tableOffset](#MBR+tableOffset) : <code>Number</code>
         * [.partitionEntries](#MBR+partitionEntries) : <code>Number</code>
         * [.parse(buffer, [start], [end])](#MBR+parse) ⇒ <code>[MBR](#MBR)</code>
+        * [.getEFIPart()](#MBR+getEFIPart) ⇒ <code>[Partition](#MBR.Partition)</code>
     * _static_
         * [.Record](#MBR.NEWLDR.Record)
             * [new Record([buffer], [start], [end])](#new_MBR.NEWLDR.Record_new)
@@ -1026,7 +1099,7 @@ Partition table entry count
         * [.PARTITION_ENTRIES](#MBR.NEWLDR.PARTITION_ENTRIES) : <code>Number</code>
 
 
--
+* * *
 
 <a name="new_MBR.NEWLDR_new"></a>
 
@@ -1040,7 +1113,7 @@ NEWLDR
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.NEWLDR+newldr"></a>
 
@@ -1049,7 +1122,7 @@ NEWLDR record
 
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR+aap"></a>
 
@@ -1058,7 +1131,7 @@ AAP partition entry #0 with special semantics
 
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 
--
+* * *
 
 <a name="MBR+partitions"></a>
 
@@ -1067,7 +1140,7 @@ Partition table
 
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 
--
+* * *
 
 <a name="MBR+code"></a>
 
@@ -1076,7 +1149,7 @@ Bootloader code
 
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 
--
+* * *
 
 <a name="MBR+format"></a>
 
@@ -1086,7 +1159,7 @@ MBR format
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+tableOffset"></a>
 
@@ -1096,7 +1169,7 @@ Partition table offset
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+partitionEntries"></a>
 
@@ -1106,7 +1179,7 @@ Number of partition entries
 **Kind**: instance property of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 **Read only**: true  
 
--
+* * *
 
 <a name="MBR+parse"></a>
 
@@ -1121,7 +1194,16 @@ Parse a Buffer
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR+getEFIPart"></a>
+
+#### newldR.getEFIPart() ⇒ <code>[Partition](#MBR.Partition)</code>
+Get the EFI system partition if available
+
+**Kind**: instance method of <code>[NEWLDR](#MBR.NEWLDR)</code>  
+
+* * *
 
 <a name="MBR.NEWLDR.Record"></a>
 
@@ -1140,7 +1222,7 @@ Parse a Buffer
     * [.signature](#MBR.NEWLDR.Record+signature) : <code>String</code>
 
 
--
+* * *
 
 <a name="new_MBR.NEWLDR.Record_new"></a>
 
@@ -1154,7 +1236,7 @@ NEWLDR Record
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+size"></a>
 
@@ -1163,7 +1245,7 @@ NEWLDR record size
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+physicalDrive"></a>
 
@@ -1172,7 +1254,7 @@ Physical drive and boot flag
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+firstCHS"></a>
 
@@ -1181,7 +1263,7 @@ CHS address of LOADER boot sector or image file
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+minDL"></a>
 
@@ -1190,7 +1272,7 @@ Allowed DL minimum, else take from partition table
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+firstLBA"></a>
 
@@ -1199,7 +1281,7 @@ LBA of LOADER boot sector or image file (optional)
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+patchOffset"></a>
 
@@ -1208,7 +1290,7 @@ Patch offset of VBR boot unit
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+checksum"></a>
 
@@ -1217,7 +1299,7 @@ Checksum (0000h if not used)
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.Record+signature"></a>
 
@@ -1226,7 +1308,7 @@ OEM loader signature (optional)
 
 **Kind**: instance property of <code>[Record](#MBR.NEWLDR.Record)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.TABLE_OFFSET"></a>
 
@@ -1235,7 +1317,7 @@ Partition table offset
 
 **Kind**: static constant of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 
--
+* * *
 
 <a name="MBR.NEWLDR.PARTITION_ENTRIES"></a>
 
@@ -1244,7 +1326,7 @@ Partition table entry count
 
 **Kind**: static constant of <code>[NEWLDR](#MBR.NEWLDR)</code>  
 
--
+* * *
 
 <a name="MBR.Partition"></a>
 
@@ -1254,15 +1336,21 @@ Partition table entry count
 * [.Partition](#MBR.Partition)
     * [new Partition([buffer], [start], [end])](#new_MBR.Partition_new)
     * _instance_
-        * [.byteOffset(blockSize)](#MBR.Partition+byteOffset) ⇒ <code>Number</code>
-        * [.byteSize(blockSize)](#MBR.Partition+byteSize) ⇒ <code>Number</code>
+        * [.status](#MBR.Partition+status) : <code>Number</code>
+        * [.type](#MBR.Partition+type) : <code>Number</code>
+        * [.sectors](#MBR.Partition+sectors) : <code>Number</code>
+        * [.firstLBA](#MBR.Partition+firstLBA) : <code>Number</code>
+        * [.firstCHS](#MBR.Partition+firstCHS) : <code>Number</code>
+        * [.lastCHS](#MBR.Partition+lastCHS) : <code>Number</code>
+        * [.byteOffset([blockSize])](#MBR.Partition+byteOffset) ⇒ <code>Number</code>
+        * [.byteSize([blockSize])](#MBR.Partition+byteSize) ⇒ <code>Number</code>
     * _static_
         * [.EXTENDED](#MBR.Partition.EXTENDED) : <code>Array</code>
         * [.parse([buffer], [start], [end])](#MBR.Partition.parse) ⇒ <code>Partition</code>
         * [.isExtended(type)](#MBR.Partition.isExtended) ⇒ <code>Boolean</code>
 
 
--
+* * *
 
 <a name="new_MBR.Partition_new"></a>
 
@@ -1276,33 +1364,87 @@ MBR Partition
 - [end] <code>Number</code>
 
 
--
+* * *
+
+<a name="MBR.Partition+status"></a>
+
+#### partition.status : <code>Number</code>
+Partition status
+
+**Kind**: instance property of <code>[Partition](#MBR.Partition)</code>  
+
+* * *
+
+<a name="MBR.Partition+type"></a>
+
+#### partition.type : <code>Number</code>
+Partition type identifier
+
+**Kind**: instance property of <code>[Partition](#MBR.Partition)</code>  
+
+* * *
+
+<a name="MBR.Partition+sectors"></a>
+
+#### partition.sectors : <code>Number</code>
+Sector count
+
+**Kind**: instance property of <code>[Partition](#MBR.Partition)</code>  
+
+* * *
+
+<a name="MBR.Partition+firstLBA"></a>
+
+#### partition.firstLBA : <code>Number</code>
+LBA of first sector
+
+**Kind**: instance property of <code>[Partition](#MBR.Partition)</code>  
+
+* * *
+
+<a name="MBR.Partition+firstCHS"></a>
+
+#### partition.firstCHS : <code>Number</code>
+CHS address of first sector
+
+**Kind**: instance property of <code>[Partition](#MBR.Partition)</code>  
+
+* * *
+
+<a name="MBR.Partition+lastCHS"></a>
+
+#### partition.lastCHS : <code>Number</code>
+CHS address of last sector
+
+**Kind**: instance property of <code>[Partition](#MBR.Partition)</code>  
+
+* * *
 
 <a name="MBR.Partition+byteOffset"></a>
 
-#### partition.byteOffset(blockSize) ⇒ <code>Number</code>
+#### partition.byteOffset([blockSize]) ⇒ <code>Number</code>
 Calculates the partition's offset in bytes
 
 **Kind**: instance method of <code>[Partition](#MBR.Partition)</code>  
 **Params**
 
-- blockSize <code>Number</code> - (optional, default: 512)
+- [blockSize] <code>Number</code> <code> = 512</code>
 
 
--
+* * *
 
 <a name="MBR.Partition+byteSize"></a>
 
-#### partition.byteSize(blockSize) ⇒ <code>Number</code>
+#### partition.byteSize([blockSize]) ⇒ <code>Number</code>
 Calculates the partition's size in bytes
 
 **Kind**: instance method of <code>[Partition](#MBR.Partition)</code>  
 **Params**
 
-- blockSize <code>Number</code> - (optional, default: 512)
+- [blockSize] <code>Number</code> <code> = 512</code>
 
 
--
+* * *
 
 <a name="MBR.Partition.EXTENDED"></a>
 
@@ -1312,7 +1454,7 @@ used for extended partitions
 
 **Kind**: static property of <code>[Partition](#MBR.Partition)</code>  
 
--
+* * *
 
 <a name="MBR.Partition.parse"></a>
 
@@ -1327,7 +1469,7 @@ Parse a MBR Partition structure
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.Partition.isExtended"></a>
 
@@ -1341,7 +1483,7 @@ describes an extended partition
 - type <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.TABLE_OFFSET"></a>
 
@@ -1350,7 +1492,7 @@ Default partition table offset
 
 **Kind**: static constant of <code>[MBR](#MBR)</code>  
 
--
+* * *
 
 <a name="MBR.PARTITION_ENTRIES"></a>
 
@@ -1359,7 +1501,7 @@ Default number of partition entries
 
 **Kind**: static constant of <code>[MBR](#MBR)</code>  
 
--
+* * *
 
 <a name="MBR.parse"></a>
 
@@ -1374,7 +1516,7 @@ Parses a buffer into an instance of MBR
 - [end] <code>Number</code>
 
 
--
+* * *
 
 <a name="MBR.detectFormat"></a>
 
@@ -1388,23 +1530,21 @@ Detects the MBR format of a given buffer
 - buffer <code>Buffer</code>
 
 
--
+* * *
 
 <a name="MBR.createBuffer"></a>
 
 ### MBR.createBuffer() ⇒ <code>Buffer</code>
-Creates a blank buffer
-with an MBR signature
+Creates a blank buffer with an MBR signature
 
 **Kind**: static method of <code>[MBR](#MBR)</code>  
 
--
+* * *
 
 <a name="MBR.isExtendedPartition"></a>
 
 ### MBR.isExtendedPartition(partition) ⇒ <code>Boolean</code>
-Determines if a given partition
-is an extended partition
+Determines if a given partition is an extended partition
 
 **Kind**: static method of <code>[MBR](#MBR)</code>  
 **Params**
@@ -1412,5 +1552,5 @@ is an extended partition
 - partition <code>[Partition](#MBR.Partition)</code>
 
 
--
+* * *
 
