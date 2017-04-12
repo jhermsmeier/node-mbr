@@ -1,6 +1,6 @@
 {
   "name": "mbr",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Master Boot Record (MBR)",
   "author": "Jonas Hermsmeier <jhermsmeier@gmail.com> (https://jhermsmeier.de)",
   "license": "MIT",
