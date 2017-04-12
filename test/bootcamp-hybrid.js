@@ -27,6 +27,10 @@ describe( 'Bootcamp Hybrid MBR', function() {
     assert.equal( mbr.partitions.length, 4 )
   })
 
+  it( 'should detect the EFI partition', function() {
+    assert.equal( mbr.getEFIPart(), mbr.partitions[0] )
+  })
+
   describe( 'Partition #1', function() {
 
     var mbr = new MBR( buffer )

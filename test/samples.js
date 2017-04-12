@@ -21,6 +21,16 @@ describe( 'Samples', function() {
       // console.log( inspect( mbr ) )
       assert.ok( mbr instanceof MBR )
       assert.equal( mbr.partitions.length, mbr.constructor.PARTITION_ENTRIES )
+      var efiPart = mbr.getEFIPart()
+      if( efiPart ) {
+        assert.ok(
+          efiPart.type === 0xEF || efiPart.type === 0xEE,
+          `Invalid EFI partition type ${efiPart.type} (0x${efiPart.type.toString(16)})`
+        )
+      } else {
+        assert.strictEqual( efiPart, null )
+      }
+      console.log( inspect( efiPart ) )
     })
 
   })
