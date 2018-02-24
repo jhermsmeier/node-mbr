@@ -10,6 +10,19 @@
 $ npm install --save mbr
 ```
 
+## Used by
+
+- **[Etcher](https://github.com/resin-io/etcher)** to flash OS images to SD cards & USB drives
+- [resin-io-modules](https://github.com/resin-io-modules) / **[partitioninfo](https://github.com/resin-io-modules/partitioninfo)** to get information about partitions in a disk image
+- [resin-io-modules](https://github.com/resin-io-modules) / **[resin-image-fs](https://github.com/resin-io-modules/resin-image-fs)** to configure & manipulate OS images
+
+## Related Modules
+
+- [gpt](https://github.com/jhermsmeier/node-gpt) – Parse, construct & verify GUID Partition Tables
+- [apple-partition-map](https://github.com/jhermsmeier/node-gpt) – Parse / construct Apple Partition Maps
+- [blockdevice](https://github.com/jhermsmeier/node-blockdevice) – Read from / write to block devices
+- [disk](https://github.com/jhermsmeier/node-disk) – Disk / image toolbox
+
 ## Handling Extended / Logical Partitions
 
 Logical partitions are not entries in the MBR. They're constructed from the contents of an extended partition's Extended Boot Records (EBR), which are essentially the same in structure as an MBR and can be parsed with this module as well.
@@ -30,6 +43,7 @@ var buffer = fs.readFileSync( 'mbr.bin' )
 ```
 
 **mbr.bin**
+
 ```
 Offset   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 
