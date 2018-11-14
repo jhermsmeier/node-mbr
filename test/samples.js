@@ -30,7 +30,7 @@ describe( 'Samples', function() {
       } else {
         assert.strictEqual( efiPart, null )
       }
-      console.log( inspect( efiPart ) )
+      // console.log( inspect( efiPart ) )
     })
 
   })

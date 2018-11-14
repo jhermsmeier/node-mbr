@@ -33,7 +33,7 @@ describe( 'Bootcamp Hybrid MBR', function() {
 
   describe( 'Partition #1', function() {
 
-    var mbr = new MBR( buffer )
+    var mbr = MBR.parse( buffer )
     var part = mbr.partitions[0]
 
     it( 'should be of type 0xEE (GPT, Protective MBR)', function() {
@@ -44,7 +44,7 @@ describe( 'Bootcamp Hybrid MBR', function() {
 
   describe( 'Partition #2', function() {
 
-    var mbr = new MBR( buffer )
+    var mbr = MBR.parse( buffer )
     var part = mbr.partitions[1]
 
     it( 'should be of type 0xAF (Apple HFS)', function() {
@@ -55,7 +55,7 @@ describe( 'Bootcamp Hybrid MBR', function() {
 
   describe( 'Partition #3', function() {
 
-    var mbr = new MBR( buffer )
+    var mbr = MBR.parse( buffer )
     var part = mbr.partitions[2]
 
     it( 'should be of type 0xAB (Apple Boot)', function() {
@@ -66,7 +66,7 @@ describe( 'Bootcamp Hybrid MBR', function() {
 
   describe( 'Partition #4', function() {
 
-    var mbr = new MBR( buffer )
+    var mbr = MBR.parse( buffer )
     var part = mbr.partitions[3]
 
     it( 'should be of type 0x07 (Windows)', function() {
