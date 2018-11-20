@@ -62,48 +62,60 @@ Offset   00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 0001F0   E0 FF 0F 03 E0 FF 00 C0 0B 00 00 60 20 00 55 AA   àÿ..àÿ.À...` .Uª
 ```
 
+## Example
+
+```console
+$ node example/inspect.js test/data/bootcamp-hybrid.bin
+```
+
 ```js
-> console.log( new MBR( buffer ) )
-{
-  physicalDrive: 0,
-  timestamp: { seconds: 0, minutes: 0, hours: 0 },
-  signature: 2339665849,
-  copyProtected: false,
-  partitions: [{
-    status: 128,
-    type: 12,
-    sectors: 40960,
-    firstLBA: 8192,
-    firstCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>,
-    lastCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>
-  }, {
-    status: 0,
-    type: 131,
-    sectors: 360448,
-    firstLBA: 49152,
-    firstCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>,
-    lastCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>
-  }, {
-    status: 0,
-    type: 131,
-    sectors: 360448,
-    firstLBA: 409600,
-    firstCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>,
-    lastCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>
-  }, {
-    status: 0,
-    type: 15,
-    sectors: 2121728,
-    firstLBA: 770048,
-    firstCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>,
-    lastCHS: <CHS { cylinder: 0, head: 0, sector: 0 }>
-  }],
-  code: [{
-    offset: 0,
-    data: <Buffer fa b8 00 10 8e d0 bc 00 b0 b8...>
-  }, {
-    offset: 224,
-    data: <Buffer 00 00 00 00 00 00 00 00 00 00...>
-  }]
+MBR {
+  signature: 43605,
+  code: [
+    Code {
+      offset: 0,
+      length: 446,
+      data: <Buffer 33 c0 8e d0 bc 00 7c 8e c0 8e d8 be 00 7c bf 00 06 b9 00 02 fc f3 a4 50 68 1c 06 cb fb b9 04 00 bd be 07 80 7e 00 00 7c 0b 0f 85 0e 01 83 c5 10 e2 f1 ... >
+    }
+  ],
+  partitions: [
+    Partition {
+      status: 0,
+      type: 238,
+      sectors: 409639,
+      firstLBA: 1,
+      firstCHS: CHS { cylinder: 1023, head: 255, sector: 62 },
+      lastCHS: CHS { cylinder: 1023, head: 255, sector: 62 }
+    },
+    Partition {
+      status: 0,
+      type: 175,
+      sectors: 52734376,
+      firstLBA: 409640,
+      firstCHS: CHS { cylinder: 1023, head: 255, sector: 62 },
+      lastCHS: CHS { cylinder: 1023, head: 255, sector: 62 }
+    },
+    Partition {
+      status: 0,
+      type: 171,
+      sectors: 1269536,
+      firstLBA: 53144016,
+      firstCHS: CHS { cylinder: 1023, head: 255, sector: 62 },
+      lastCHS: CHS { cylinder: 1023, head: 255, sector: 62 }
+    },
+    Partition {
+      status: 128,
+      type: 7,
+      sectors: 182560768,
+      firstLBA: 54415360,
+      firstCHS: CHS { cylinder: 1023, head: 255, sector: 62 },
+      lastCHS: CHS { cylinder: 1023, head: 255, sector: 62 }
+    }
+  ]
 }
 ```
+
+## Resources
+
+- [wikipedia.org / master boot record](https://en.wikipedia.org/wiki/Master_boot_record)
+- [thestarman.pcministry.com / partition tables](https://thestarman.pcministry.com/asm/mbr/PartTables.htm)
