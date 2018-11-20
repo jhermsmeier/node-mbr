@@ -15,22 +15,33 @@ describe( 'Samples', function() {
 
     var basename = path.basename( filename, '.bin' )
 
-    specify( `should parse ${basename} format`, function() {
-      var buffer = fs.readFileSync( filename )
-      var mbr = MBR.parse( buffer )
-      // console.log( inspect( mbr ) )
-      assert.ok( mbr instanceof MBR )
-      assert.equal( mbr.partitions.length, mbr.constructor.PARTITION_ENTRIES )
-      var efiPart = mbr.getEFIPart()
-      if( efiPart ) {
-        assert.ok(
-          efiPart.type === 0xEF || efiPart.type === 0xEE,
-          `Invalid EFI partition type ${efiPart.type} (0x${efiPart.type.toString(16)})`
-        )
-      } else {
-        assert.strictEqual( efiPart, null )
-      }
-      // console.log( inspect( efiPart ) )
+    describe( basename, function() {
+
+      var buffer = null
+
+      before( function() {
+        buffer = fs.readFileSync( filename )
+      })
+
+      specify( `should parse`, function() {
+        var mbr = MBR.parse( buffer )
+        // console.log( inspect( mbr ) )
+        assert.ok( mbr instanceof MBR )
+        assert.equal( mbr.partitions.length, mbr.constructor.PARTITION_ENTRIES )
+        var efiPart = mbr.getEFIPart()
+        if( efiPart ) {
+          assert.ok(
+            efiPart.type === 0xEF || efiPart.type === 0xEE,
+            `Invalid EFI partition type ${efiPart.type} (0x${efiPart.type.toString(16)})`
+          )
+        }
+      })
+
+      specify( 'input / output equality', function() {
+        var mbr = MBR.parse( buffer )
+        assert.deepEqual( mbr.write(), buffer )
+      })
+
     })
 
   })
