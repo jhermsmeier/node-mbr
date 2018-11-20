@@ -71,13 +71,11 @@ $ node example/inspect.js test/data/bootcamp-hybrid.bin
 ```js
 MBR {
   signature: 43605,
-  code: [
-    Code {
-      offset: 0,
-      length: 446,
-      data: <Buffer 33 c0 8e d0 bc 00 7c 8e c0 8e d8 be 00 7c bf 00 06 b9 00 02 fc f3 a4 50 68 1c 06 cb fb b9 04 00 bd be 07 80 7e 00 00 7c 0b 0f 85 0e 01 83 c5 10 e2 f1 ... >
-    }
-  ],
+  code: Code {
+    offset: 0,
+    length: 446,
+    data: <Buffer 33 c0 8e d0 bc 00 7c 8e c0 8e d8 be 00 7c bf 00 06 b9 00 02 fc f3 a4 50 68 1c 06 cb fb b9 04 00 bd be 07 80 7e 00 00 7c 0b 0f 85 0e 01 83 c5 10 e2 f1 ... >
+  },
   partitions: [
     Partition {
       status: 0,

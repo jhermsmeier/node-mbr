@@ -41,12 +41,14 @@ formats.forEach( function( format ) {
       })
 
       specify( 'has matching initialized code regions', function() {
+
         var mbr = new MBR[ format ]()
-        assert.strictEqual( mbr.code.length, MBR[ format ].CODE_REGIONS.length )
-        mbr.code.forEach( function( codeRegion, i ) {
-          var region = MBR[ format ].CODE_REGIONS[i]
-          assert.equal( codeRegion.length, region.end - region.start )
-        })
+        var length = MBR[ format ].CODE_REGION.end - MBR[ format ].CODE_REGION.start
+
+        assert.strictEqual( mbr.code.length, length )
+        assert.strictEqual( mbr.code.offset, MBR[ format ].CODE_REGION.start )
+        assert.strictEqual( mbr.code.data.length, length )
+
       })
 
     })
