@@ -11,7 +11,7 @@ describe( 'Bootcamp Hybrid MBR', function() {
 
   it( 'should be able to detect the correct format', function() {
     var format = MBR.detectFormat( buffer )
-    assert.equal( format, 'CLASSIC' )
+    assert.equal( format, 'MODERN' )
   })
 
   it( 'should be able to parse the MBR', function() {
