@@ -12,9 +12,9 @@ $ npm install --save mbr
 
 ## Used by
 
-- **[Etcher](https://github.com/resin-io/etcher)** to flash OS images to SD cards & USB drives
-- [resin-io-modules](https://github.com/resin-io-modules) / **[partitioninfo](https://github.com/resin-io-modules/partitioninfo)** to get information about partitions in a disk image
-- [resin-io-modules](https://github.com/resin-io-modules) / **[resin-image-fs](https://github.com/resin-io-modules/resin-image-fs)** to configure & manipulate OS images
+- **[Etcher](https://github.com/balena-io/etcher)** to flash OS images to SD cards & USB drives
+- [balena-io-modules](https://github.com/balena-io-modules) / **[partitioninfo](https://github.com/balena-io-modules/partitioninfo)** to get information about partitions in a disk image
+- [balena-io-modules](https://github.com/balena-io-modules) / **[resin-image-fs](https://github.com/balena-io-modules/resin-image-fs)** to configure & manipulate OS images
 
 ## Related Modules
 
