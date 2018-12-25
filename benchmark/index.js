@@ -3,7 +3,7 @@ var fs = require( 'fs' )
 var path = require( 'path' )
 var MBR = require( '..' )
 
-const ITERATIONS = 10000
+const ITERATIONS = 1000000
 
 bench( `MBR.detectFormat() ⨉ ${ITERATIONS}`, function( run ) {
 
