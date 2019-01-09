@@ -7,6 +7,11 @@ var argv = process.argv.slice( 2 )
 
 var filename = argv.shift()
 
+if( !filename ) {
+  console.error( 'Usage: node example/inspect.js <filename>' )
+  process.exit( 1 )
+}
+
 var fd = fs.openSync( filename, 'r' )
 
 var length = MBR.SIZE
@@ -14,8 +19,10 @@ var buffer = Buffer.alloc( length )
 var offset = 0
 var position = 0
 
-fs.read( fd, buffer, offset, length, position )
+fs.readSync( fd, buffer, offset, length, position )
 
 var mbr = MBR.parse( buffer )
 
 inspect.log( mbr )
+
+fs.closeSync( fd )
