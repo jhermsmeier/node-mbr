@@ -58,7 +58,7 @@ extendedPartitions.forEach(( partition ) => {
     logicalPartition.status = ebr.partitions[0].status
     logicalPartition.type = ebr.partitions[0].type
     logicalPartition.sectors = ebr.partitions[0].sectors
-    logicalPartition.firstLBA = partition.firstLBA + ebr.partitions[0].firstLBA
+    logicalPartition.firstLBA = ebr.partitions[0].firstLBA + ( position / blockSize )
     ebr.partitions[0].firstCHS.copy( logicalPartition.firstCHS )
     ebr.partitions[0].lastCHS.copy( logicalPartition.lastCHS )
 
