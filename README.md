@@ -29,6 +29,15 @@ Logical partitions are not entries in the MBR. They're constructed from the cont
 
 In order to read logical partitions, find a partition entry that's marked as extended partition container, then read that partition's first 512 bytes (the EBR), parse that, then look for additional EBRs in the extended partition. For more detail on how extended / logical partitions work, see [Wikipedia / Extended Boot Record](https://en.wikipedia.org/wiki/Extended_boot_record)
 
+## Supported Formats
+
+- Classic
+- Modern
+- NewLdr
+- DiskManager
+- AAP (Active Advanced Partitions)
+- AST (AST / NEC / SpeedStor)
+
 ## Usage
 
 For a complete API reference, see [`doc/README.md`](https://github.com/jhermsmeier/node-mbr/tree/master/doc)
