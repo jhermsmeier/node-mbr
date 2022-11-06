@@ -2,7 +2,6 @@
 [![npm](https://img.shields.io/npm/v/mbr.svg?style=flat-square)](https://npmjs.com/package/mbr)
 [![npm license](https://img.shields.io/npm/l/mbr.svg?style=flat-square)](https://npmjs.com/package/mbr)
 [![npm downloads](https://img.shields.io/npm/dm/mbr.svg?style=flat-square)](https://npmjs.com/package/mbr)
-[![build status](https://img.shields.io/travis/jhermsmeier/node-mbr.svg?style=flat-square)](https://travis-ci.org/jhermsmeier/node-mbr)
 
 ## Install via [npm](https://npmjs.com)
 
