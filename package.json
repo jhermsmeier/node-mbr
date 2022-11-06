@@ -24,11 +24,11 @@
     "docs": "echo '# API Reference' > doc/README.md; jsdoc2md 'lib/**/*.js' --example-lang js --separators --global-index-format grouped --property-list-format list --param-list-format list --member-index-format grouped >> doc/README.md"
   },
   "dependencies": {
-    "chs": "^1.1.0"
+    "chs": "1.1.0"
   },
   "devDependencies": {
-    "@jhermsmeier/control": "^1.3.1",
-    "nanobench": "^2.1.1"
+    "@jhermsmeier/control": "1.3.1",
+    "nanobench": "2.1.1"
   },
   "homepage": "https://github.com/jhermsmeier/node-mbr",
   "repository": {
