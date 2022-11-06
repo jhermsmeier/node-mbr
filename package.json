@@ -24,7 +24,6 @@
     "docs": "echo '# API Reference' > doc/README.md; jsdoc2md 'lib/**/*.js' --example-lang js --separators --global-index-format grouped --property-list-format list --param-list-format list --member-index-format grouped >> doc/README.md"
   },
   "dependencies": {
-    "bloodline": "^1.0.1",
     "chs": "^1.1.0"
   },
   "devDependencies": {
