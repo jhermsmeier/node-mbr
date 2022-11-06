@@ -9,21 +9,21 @@ var samples = fs.readdirSync( path.join( __dirname, 'data' ) )
     return path.join( __dirname, 'data', filename )
   })
 
-describe( 'Samples', function() {
+context( 'Samples', function() {
 
   samples.forEach( function( filename ) {
 
     var basename = path.basename( filename, '.bin' )
 
-    describe( basename, function() {
+    context( basename, function() {
 
       var buffer = null
 
-      before( function() {
+      before( 'fs.readFileSync', function() {
         buffer = fs.readFileSync( filename )
       })
 
-      specify( `should parse`, function() {
+      test( `should parse`, function() {
         var mbr = MBR.parse( buffer )
         // console.log( inspect( mbr ) )
         assert.ok( mbr instanceof MBR )
@@ -37,7 +37,7 @@ describe( 'Samples', function() {
         }
       })
 
-      specify( 'input / output equality', function() {
+      test( 'input / output equality', function() {
         var mbr = MBR.parse( buffer )
         assert.deepEqual( mbr.write(), buffer )
       })
