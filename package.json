@@ -23,8 +23,8 @@
     "chs": "^1.1.0"
   },
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "nanobench": "^2.1.1"
+    "@jhermsmeier/control": "2.0.0",
+    "nanobench": "2.1.1"
   },
   "homepage": "https://github.com/jhermsmeier/node-mbr",
   "repository": {
@@ -34,11 +34,8 @@
   "bugs": {
     "url": "https://github.com/jhermsmeier/node-mbr/issues"
   },
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "mocha",
+    "test": "control test",
     "benchmark": "node benchmark",
     "docs": "echo '# API Reference' > doc/README.md; jsdoc2md 'lib/**/*.js' --separators --global-index-format grouped --property-list-format list --param-list-format list >> doc/README.md"
   }

@@ -9,13 +9,13 @@ var samples = fs.readdirSync( path.join( __dirname, 'data' ) )
     return path.join( __dirname, 'data', filename )
   })
 
-describe( 'Samples', function() {
+context( 'Samples', function() {
 
   samples.forEach( function( filename ) {
 
     var basename = path.basename( filename, '.bin' )
 
-    specify( `should parse ${basename} format`, function() {
+    test( `should parse ${basename} format`, function() {
       var buffer = fs.readFileSync( filename )
       var mbr = MBR.parse( buffer )
       // console.log( inspect( mbr ) )
@@ -30,7 +30,7 @@ describe( 'Samples', function() {
       } else {
         assert.strictEqual( efiPart, null )
       }
-      console.log( inspect( efiPart ) )
+      // console.log( inspect( efiPart ) )
     })
 
   })
